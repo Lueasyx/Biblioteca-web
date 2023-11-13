@@ -1,30 +1,16 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 import boxIconElement from "boxicons/src/box-icon-element";
-import HelloWorld from './components/SearchCard.vue'
 import HomeView from "@/views/HomeView.vue";
 </script>
 
 <template>
   <header class="header" style="background: #005BAA;">
     <div class="header__container">
-      <a href="index" class="header__logo">Estrutura MVC</a>
+      <router-link to="/" class="header__logo">Virtuateca</router-link>
 
       <div class="btn-group">
-        <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-          Cadastrar
-        </button>
-        <ul class="dropdown-menu">
-          <form action="" style="padding: 20px;width: 18rem;">
-            <p>Cadastre-se</p>
-            <div class="input-group flex-nowrap mb-2">
-              <input id="nomealuno" type="text" class="form-control" placeholder="Nome" aria-label="Nome" aria-describedby="addon-wrapping" required>
-            </div>
-            <div class="d-flex justfy-content-center" style="gap: 1rem;">
-              <button onclick="cadastraAluno()" type="button" class="btn btn-primary">Cadastrar</button>
-            </div>
-          </form>
-        </ul>
+        <router-link to="/login" class="btn btn-primary">Login</router-link>
       </div>
       <div class="header__toggle">
         <i class='bx bx-menu' id="header-toggle"></i>

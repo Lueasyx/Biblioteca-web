@@ -123,6 +123,7 @@
       <path value="$PROJECT_DIR$/Backend/vendor/symfony/polyfill-mbstring" />
       <path value="$PROJECT_DIR$/Backend/vendor/brick/math" />
       <path value="$PROJECT_DIR$/Backend/vendor/filp/whoops" />
+      <path value="$PROJECT_DIR$/Backend/vendor/lucascudo/laravel-pt-br-localization" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.1" />

@@ -2,14 +2,14 @@
   <main class="emprestimo">
     <div class="search">
       <div class="input-group mb-3 d-flex justify-content-center">
-        <input id="searchbar" onkeyup="searchLivros(this)" class="form-control" style="width: 55rem;" placeholder="Pesquisar" aria-describedby="button-addon2">
-        <button class="btn btn-outline-primary" type="button" onclick="searchLivros()" id="button-addon2">
+        <input id="searchbar" @keyup="searchLivros(this)" class="form-control" style="width: 55rem;" placeholder="Pesquisar" aria-describedby="button-addon2">
+        <button class="btn btn-outline-primary" type="button" @click="searchLivros()" id="button-addon2">
           <i class="bx bx-search" style="font-weight: 900; "></i>
         </button>
       </div>
     </div>
     <ol id="livros" style="list-style-type: none; padding-left: 0rem;">
-
+      <emprestimocards v-for="livro in Livros" :key="livro.id" :Livro="livro"/>
     </ol>
     <div id="formula" style="background-color: #ffffff; border-radius: 1em;  opacity: 0.5;pointer-events: none;">
       <form style="padding: 1rem 1rem 0 1rem;">
@@ -18,7 +18,7 @@
             Livros Selecionados
           </div>
           <ul id="livros_selecionados" class="list-group list-group-flush">
-
+            
           </ul>
         </div>
         <div class="mb-3">
@@ -48,6 +48,50 @@
     </div>
   </main>
 </template>
+<script>
+import emprestimocards from '@/components/Emprestimocards.vue';
+import axios from 'axios';
+
+export default {
+  data() {
+    return {
+      Livros: [],
+    };
+  },
+  methods: {
+    getLivros() {
+      axios.get('/livro').then((res) => {
+        this.Livros = res.data.data;
+        console.log(this.Livros)
+      })
+    },
+    searchLivros() {
+      let input = document.getElementById('searchbar').value
+      input = input.toLowerCase();
+      // console.log(input);
+      let Livro = document.getElementsByName('livro');
+      console.log(Livro);
+
+      for (let i = 0; i < Livro.length; i++) {
+        console.log(i, Livro[i])
+        if (!Livro[i].innerHTML.toLowerCase().includes(input)) {
+          Livro[i].style.display = "none";
+        } else {
+          Livro[i].style.display = "list-item";
+          Livro[i].style.listStyle = "none";
+        }
+      }
+    },
+  },
+  mounted() {
+    this.getLivros();
+  },
+  watch: {
+
+  }
+}
+
+</script>
 
 <style>
 </style>

@@ -1,12 +1,14 @@
 <template>
-  <div class="col-4" id="${item.titulo}" name="livro">
-    <div class="card mb-3" style="max-width: 540px;">
-      <div class="card-body">
-        <h5 class="card-title">${item.titulo}</h5>
-        <p class="card-text">Autor: ${item.autor}<br> ISBN: ${item.isbn}<br> ${item.edicao}º edição</p>
-        <p class="card-text"><small class="text-muted">Quantidade em estoque: ${item.estoque}</small></p>
+  <div class="col-4" :id="livro.Titulo" name="livro">
+    <div class="card mb-3" style="max-width: 540px; height: 250px;">
+      <div class="card-body d-flex flex-column justify-content-around">
+        <div>
+          <h5 class="card-title">{{ livro.Titulo }}</h5>
+          <p class="card-text">Autor: {{ livro.Autor }}<br> ISBN: {{ livro.isbn }}<br> {{ livro.Edicao }}º edição</p>
+          <p class="card-text"><small class="text-muted">Quantidade em estoque: {{ livro.Estoque }}</small></p>
+        </div>
         <div class="d-flex justify-content-between align-items-center flex-wrap">
-          <button value="${item.id}" class="btn btn-primary" onclick="sendParam(value)" type="button">Alugar</button>
+          <router-link class="btn btn-primary" :to="{name: 'emprestimo', params: {livroId: livro.id}}">Alugar</router-link>
           <i class="bx bx-heart nav__icon" id="like" style="margin-left: 5rem; font-size: 1.5rem;"></i>
         </div>
       </div>
@@ -15,6 +17,25 @@
 </template>
 
 <script>
+export default {
+  data() {
+    return {
+      
+    };
+  },
+  props: {
+    livro: Object
+  },
+  methods: {
+
+  },
+  mounted() {
+
+  },
+  watch: {
+
+  }
+}
 
 </script>
 
