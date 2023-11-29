@@ -18,21 +18,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+header('Access-Control-Allow-Origin: http://localhost:5173');
+header('Access-Control-Allow-Methods: POST, GET, OPTIONS, PUT, DELETE');
+header('Access-Control-Allow-Headers: Content-Type, X-Auth-Token, Origin, Authorization');
+
 //Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //    return $request->user();
 //});
 
 Route::get('/Users', [UserController::class, 'Index']);
 Route::get('/users/{user}', [UserController::class, 'Show']);
-
-
 //Rotas do autor
 Route::ApiResource('autor', AutorController::class);
+Route::get('/livroSelect/{livros}', ['LivroController@livroSelect']);
+//Rota do Livro
+Route::apiResource('livro', LivroController::class);
+Route::apiResource('emprestimo', EmprestimoController::class);
+
+
 //Route::get('/autor', [AutorController::class, 'Index']);
 //Route::get('/autor/{id}', [AutorController::class, 'Show']);
 //Route::post('/autor/', [AutorController::class, 'Store']);
 //Route::delete('/autor/{autor}', [AutorController::class, 'Destroy']);
-
-//Rota do Livro
-Route::apiResource('livro', LivroController::class);
-Route::apiResource('emprestimo', EmprestimoController::class);

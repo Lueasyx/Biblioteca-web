@@ -64,18 +64,12 @@ class LivroController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Livro $livro)
+    public function show(Request $request)
     {
-        return Livro::findOrFail($livro->id);
+        dd($request);
+//        return Livro::findOrFail($livro->id);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function nhew(Request $request, Livro $livro)
-    {
-        return $livro;
-    }
 
     /**
      * Remove the specified resource from storage.

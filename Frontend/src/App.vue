@@ -7,7 +7,7 @@ import HomeView from "@/views/HomeView.vue";
 <template>
   <header class="header" style="background: #005BAA;">
     <div class="header__container">
-      <router-link to="/" class="header__logo">Virtuateca</router-link>
+      <router-link to="/" class="header__logo"><img type="png" src="@/assets/Virtuateca.png" style="width: 10rem;"></router-link>
 
       <div class="btn-group">
         <router-link to="/login" class="btn btn-primary">Login</router-link>
